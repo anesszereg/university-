@@ -1,0 +1,723 @@
+{
+	"info": {
+		"_postman_id": "b5e7b5e7-b5e7-b5e7-b5e7-b5e7b5e7b5e7",
+		"name": "Course Management API",
+		"description": "API documentation for Course Management System with Authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/register",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "users", "register"]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"secure_password\"\n}"
+						},
+						"description": "Register a new user with name, email, and password"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"body": {
+								"status": true,
+								"message": "User registered successfully",
+								"data": {
+									"user": {
+										"_id": "user_id",
+										"name": "John Doe",
+										"email": "john@example.com"
+									},
+									"token": "jwt_token_here"
+								}
+							}
+						},
+						{
+							"name": "User Exists Error",
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"body": {
+								"status": false,
+								"message": "User with this email already exists"
+							}
+						}
+					]
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/login",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "users", "login"]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"secure_password\"\n}"
+						},
+						"description": "Login with email and password to get JWT token"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"body": {
+								"status": true,
+								"message": "Login successful",
+								"data": {
+									"user": {
+										"_id": "user_id",
+										"name": "John Doe",
+										"email": "john@example.com"
+									},
+									"token": "jwt_token_here"
+								}
+							}
+						},
+						{
+							"name": "Invalid Credentials",
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"body": {
+								"status": false,
+								"message": "Invalid credentials"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "users"]
+						},
+						"description": "Get all users (requires admin authentication)"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"body": {
+								"status": true,
+								"message": "Users fetched successfully",
+								"data": [
+									{
+										"_id": "user_id_1",
+										"name": "John Doe",
+										"email": "john@example.com"
+									},
+									{
+										"_id": "user_id_2",
+										"name": "Jane Smith",
+										"email": "jane@example.com"
+									}
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Get User by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/:id",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "users", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "user_id_here"
+								}
+							]
+						},
+						"description": "Get a single user by ID"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"body": {
+								"status": true,
+								"message": "User fetched successfully",
+								"data": {
+									"_id": "user_id",
+									"name": "John Doe",
+									"email": "john@example.com"
+								}
+							}
+						},
+						{
+							"name": "User Not Found",
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"body": {
+								"status": false,
+								"message": "User not found"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Courses",
+			"item": [
+				{
+					"name": "Get All Courses",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/courses",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "courses"]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"url": {
+									"raw": "http://localhost:3000/api/v1/courses"
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"body": {
+								"courses": [
+									{
+										"_id": "course_id",
+										"title": "JavaScript Fundamentals",
+										"description": "Learn the basics of JavaScript",
+										"teacher": {
+											"_id": "teacher_id",
+											"name": "John Doe",
+											"email": "john@example.com",
+											"specialization": "Web Development"
+										},
+										"students": [
+											{
+												"_id": "student_id",
+												"name": "Jane Smith",
+												"email": "jane@example.com"
+											}
+										],
+										"capacity": 30,
+										"startDate": "2025-06-01T00:00:00.000Z",
+										"endDate": "2025-08-31T00:00:00.000Z"
+									}
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Get Single Course",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/courses/:id",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "courses", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "course_id_here",
+									"description": "Course ID"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"url": {
+									"raw": "http://localhost:3000/api/v1/courses/:id"
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"body": {
+								"_id": "course_id",
+								"title": "JavaScript Fundamentals",
+								"description": "Learn the basics of JavaScript",
+								"teacher": {
+									"_id": "teacher_id",
+									"name": "John Doe",
+									"email": "john@example.com",
+									"specialization": "Web Development"
+								},
+								"students": [],
+								"capacity": 30,
+								"startDate": "2025-06-01T00:00:00.000Z",
+								"endDate": "2025-08-31T00:00:00.000Z"
+							}
+						},
+						{
+							"name": "Course Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"url": {
+									"raw": "http://localhost:3000/api/v1/courses/:id"
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"body": {
+								"message": "Course not found"
+							}
+						}
+					]
+				},
+				{
+					"name": "Create Course",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/courses",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "courses"]
+						},
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"JavaScript Fundamentals\",\n  \"description\": \"Learn the basics of JavaScript\",\n  \"teacher\": \"teacher_id_here\",\n  \"capacity\": 30,\n  \"startDate\": \"2025-06-01\",\n  \"endDate\": \"2025-08-31\"\n}"
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"url": {
+									"raw": "http://localhost:3000/api/v1/courses"
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"body": {
+								"_id": "course_id",
+								"title": "JavaScript Fundamentals",
+								"description": "Learn the basics of JavaScript",
+								"teacher": "teacher_id_here",
+								"students": [],
+								"capacity": 30,
+								"startDate": "2025-06-01T00:00:00.000Z",
+								"endDate": "2025-08-31T00:00:00.000Z"
+							}
+						}
+					]
+				},
+				{
+					"name": "Add Student to Course",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/courses/:id/students",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "courses", ":id", "students"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "course_id_here",
+									"description": "Course ID"
+								}
+							]
+						},
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"studentId\": \"student_id_here\"\n}"
+						},
+						"description": "Adds a student to a course and updates both the course and student documents. The course's students array and student's enrolledCourses array are updated."
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"url": {
+									"raw": "http://localhost:3000/api/v1/courses/:id/students"
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"body": {
+								"message": "Student added to course successfully",
+								"course": {
+									"_id": "course_id",
+									"title": "JavaScript Fundamentals",
+									"students": ["student_id_here"],
+									"capacity": 30
+								},
+								"student": {
+									"_id": "student_id_here",
+									"name": "John Doe",
+									"enrolledCourses": [
+										{
+											"course": "course_id",
+											"enrollmentDate": "2025-05-23T11:26:39.000Z"
+										}
+									]
+								}
+							}
+						},
+						{
+							"name": "Course Full Error",
+							"originalRequest": {
+								"method": "POST",
+								"url": {
+									"raw": "http://localhost:3000/api/v1/courses/:id/students"
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"body": {
+								"message": "Course is full"
+							}
+						},
+						{
+							"name": "Already Enrolled Error",
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"body": {
+								"message": "Student already enrolled in this course"
+							}
+						},
+						{
+							"name": "Student Not Found",
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"body": {
+								"message": "Student not found"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Teachers",
+			"item": [
+				{
+					"name": "Get All Teachers",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/teachers",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "teachers"]
+						}
+					}
+				},
+				{
+					"name": "Create Teacher",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/teachers",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "teachers"]
+						},
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"secure_password_here\",\n  \"specialization\": \"Web Development\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Add Course to Teacher",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/teachers/:id/courses",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "teachers", ":id", "courses"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "teacher_id_here"
+								}
+							]
+						},
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"courseId\": \"course_id_here\"\n}"
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"body": {
+								"message": "Course added to teacher successfully"
+							}
+						},
+						{
+							"name": "Already Teaching Error",
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"body": {
+								"message": "Teacher already teaches this course"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Students",
+			"item": [
+				{
+					"name": "Get All Students",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/students",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "students"]
+						}
+					}
+				},
+				{
+					"name": "Create Student",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/students",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "students"]
+						},
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Jane Smith\",\n  \"email\": \"jane@example.com\",\n  \"password\": \"secure_password_here\"\n}"
+						}
+					}
+				}
+			]
+		}
+	]
+}

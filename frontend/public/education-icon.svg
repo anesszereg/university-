@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient Background -->
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#7E22CE" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Rounded Square Background -->
+  <rect x="32" y="32" width="448" height="448" rx="80" fill="url(#grad1)" />
+  
+  <!-- Book Icon -->
+  <path d="M128 128V384H384V128H128Z" fill="white" fill-opacity="0.15"/>
+  
+  <!-- Book Pages -->
+  <path d="M144 144V368H368V144H144Z" fill="white" fill-opacity="0.2"/>
+  
+  <!-- Academic Cap -->
+  <path d="M256 112L368 176L256 240L144 176L256 112Z" fill="white"/>
+  <path d="M176 208V272C176 272 216 304 256 304C296 304 336 272 336 272V208L256 256L176 208Z" fill="white"/>
+  <rect x="248" y="304" width="16" height="48" fill="white"/>
+  <rect x="232" y="352" width="48" height="16" fill="white"/>
+  
+  <!-- Pencil -->
+  <path d="M368 272L400 240L384 224L352 256L368 272Z" fill="white"/>
+  <path d="M352 256L320 288L336 304L368 272L352 256Z" fill="white"/>
+  <path d="M320 288L304 336L336 304L320 288Z" fill="white"/>
+</svg>

@@ -1,0 +1,392 @@
+{
+	"info": {
+		"_postman_id": "b5e7b5e7-b5e7-b5e7-b5e7-b5e7b5e7b5e7",
+		"name": "Course Management System API",
+		"description": "API collection for Course Management System including courses, teachers, and students endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Courses",
+			"item": [
+				{
+					"name": "Get All Courses",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/courses",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "courses"]
+						}
+					}
+				},
+				{
+					"name": "Get Single Course",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/courses/:id",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "courses", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "course_id_here"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Course",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/courses",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "courses"]
+						},
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"JavaScript Fundamentals\",\n  \"description\": \"Learn the basics of JavaScript\",\n  \"teacher\": \"teacher_id_here\",\n  \"capacity\": 30,\n  \"startDate\": \"2025-06-01\",\n  \"endDate\": \"2025-08-31\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Update Course",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/courses/:id",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "courses", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "course_id_here"
+								}
+							]
+						},
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Advanced JavaScript\",\n  \"description\": \"Updated course description\",\n  \"capacity\": 35,\n  \"startDate\": \"2025-07-01\",\n  \"endDate\": \"2025-09-30\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Delete Course",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/courses/:id",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "courses", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "course_id_here"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Add Student to Course",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/courses/:id/students",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "courses", ":id", "students"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "course_id_here"
+								}
+							]
+						},
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"studentId\": \"student_id_here\"\n}"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Teachers",
+			"item": [
+				{
+					"name": "Get All Teachers",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/teachers",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "teachers"]
+						}
+					}
+				},
+				{
+					"name": "Get Single Teacher",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/teachers/:id",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "teachers", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "teacher_id_here"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Teacher",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/teachers",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "teachers"]
+						},
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"secure_password_here\",\n  \"specialization\": \"Web Development\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Update Teacher",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/teachers/:id",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "teachers", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "teacher_id_here"
+								}
+							]
+						},
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Smith\",\n  \"specialization\": \"Full Stack Development\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Delete Teacher",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/teachers/:id",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "teachers", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "teacher_id_here"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Add Course to Teacher",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/teachers/:id/courses",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "teachers", ":id", "courses"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "teacher_id_here"
+								}
+							]
+						},
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"courseId\": \"course_id_here\"\n}"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Students",
+			"item": [
+				{
+					"name": "Get All Students",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/students",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "students"]
+						}
+					}
+				},
+				{
+					"name": "Get Single Student",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/students/:id",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "students", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "student_id_here"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Student",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/students",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "students"]
+						},
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Jane Smith\",\n  \"email\": \"jane@example.com\",\n  \"password\": \"secure_password_here\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Update Student",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/students/:id",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "students", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "student_id_here"
+								}
+							]
+						},
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Jane Doe\",\n  \"email\": \"jane.doe@example.com\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Delete Student",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "http://localhost:3000/api/v1/students/:id",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "v1", "students", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "student_id_here"
+								}
+							]
+						}
+					}
+				}
+			]
+		}
+	]
+}
