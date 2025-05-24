@@ -248,7 +248,7 @@ function Courses() {
                     defaultValue={currentCourse?.title || ''}
                     required
                     placeholder="Enter course title"
-                    className="pl-10 block w-full rounded-lg border-gray-300 bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 hover:bg-white"
+                    className="pl-10 h-10 block w-full rounded-lg border-gray-300 bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 hover:bg-white"
                   />
                 </div>
               </div>
@@ -281,7 +281,7 @@ function Courses() {
                     required
                     min="1"
                     placeholder="Enter maximum number of students"
-                    className="pl-10 block w-full rounded-lg border-gray-300 bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 hover:bg-white"
+                    className="pl-10 h-10 block w-full rounded-lg border-gray-300 bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 hover:bg-white"
                   />
                 </div>
               </div>
@@ -296,7 +296,7 @@ function Courses() {
                     name="startDate"
                     defaultValue={currentCourse?.startDate ? new Date(currentCourse.startDate).toISOString().split('T')[0] : ''}
                     required
-                    className="pl-10 block w-full rounded-lg border-gray-300 bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 hover:bg-white"
+                    className="pl-10 h-10 block w-full rounded-lg border-gray-300 bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 hover:bg-white"
                   />
                 </div>
               </div>
@@ -311,7 +311,7 @@ function Courses() {
                     name="endDate"
                     defaultValue={currentCourse?.endDate ? new Date(currentCourse.endDate).toISOString().split('T')[0] : ''}
                     required
-                    className="pl-10 block w-full rounded-lg border-gray-300 bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 hover:bg-white"
+                    className="pl-10 h-10 block w-full rounded-lg border-gray-300 bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 hover:bg-white"
                   />
                 </div>
               </div>

@@ -81,7 +81,7 @@ function Teachers() {
   const filteredTeachers = teachers.filter(teacher => 
     teacher.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     teacher.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    teacher.subject?.toLowerCase().includes(searchTerm.toLowerCase())
+    teacher.specialization?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -182,7 +182,7 @@ function Teachers() {
                     <svg className="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                     </svg>
-                    {teacher.subject}
+                    {teacher.specialization}
                   </div>
                 </div>
               </div>
@@ -266,7 +266,7 @@ function Teachers() {
                   name: formData.get('name'),
                   email: formData.get('email'),
                   phone: formData.get('phone'),
-                  subject: formData.get('subject'),
+                  specialization: formData.get('specialization'),
                   ...(currentTeacher ? {} : { password: formData.get('password') }),
                 };
                 
@@ -331,7 +331,7 @@ function Teachers() {
                 </div>
               </div>
               <div className="relative">
-                <label className="block text-left text-sm font-semibold text-gray-700 mb-1">Subject</label>
+                <label className="block text-left text-sm font-semibold text-gray-700 mb-1">specialization</label>
                 <div className="relative rounded-lg shadow-sm">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg className="h-5 w-5 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -340,10 +340,10 @@ function Teachers() {
                   </div>
                   <input
                     type="text"
-                    name="subject"
-                    defaultValue={currentTeacher?.subject || ''}
+                    name="specialization"
+                    defaultValue={currentTeacher?.specialization || ''}
                     required
-                    placeholder="Enter teacher's subject"
+                    placeholder="Enter teacher's specialization"
                     className="pl-10 h-10 block w-full rounded-lg border-gray-300 bg-gray-50 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 hover:bg-white"
                   />
                 </div>
