@@ -117,7 +117,7 @@ const handleEnrollStudent = async (studentId, courseId) => {
             <input
               type="text"
               placeholder="Search students..."
-              className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full md:w-64 bg-gray-50 hover:bg-white transition-all duration-200"
+              className="pl-10 h-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full md:w-64 bg-gray-50 hover:bg-white transition-all duration-200"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -360,7 +360,7 @@ const handleEnrollStudent = async (studentId, courseId) => {
                     defaultValue={currentStudent?.name || ''}
                     required
                     placeholder="Enter student's name"
-                    className="pl-10 block w-full rounded-lg border-gray-300 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 hover:bg-white"
+                    className="pl-10 h-10 block w-full rounded-lg border-gray-300 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 hover:bg-white"
                   />
                 </div>
               </div>
@@ -378,7 +378,7 @@ const handleEnrollStudent = async (studentId, courseId) => {
                     defaultValue={currentStudent?.email || ''}
                     required
                     placeholder="Enter student's email"
-                    className="pl-10 block w-full rounded-lg border-gray-300 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 hover:bg-white"
+                    className="pl-10 h-10 block w-full rounded-lg border-gray-300 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 hover:bg-white"
                   />
                 </div>
               </div>
@@ -389,7 +389,7 @@ const handleEnrollStudent = async (studentId, courseId) => {
                   name="phone"
                   required
                   defaultValue={currentStudent?.phone || ''}
-                  className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                  className="mt-1 h-10 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                 />
               </div>
               <div>
@@ -399,7 +399,7 @@ const handleEnrollStudent = async (studentId, courseId) => {
                   name="dateOfBirth"
                   required
                   defaultValue={currentStudent?.dateOfBirth ? new Date(currentStudent.dateOfBirth).toISOString().split('T')[0] : ''}
-                  className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                  className="mt-1 h-10 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                 />
               </div>
               {!currentStudent && (
@@ -409,7 +409,7 @@ const handleEnrollStudent = async (studentId, courseId) => {
                     type="password"
                     name="password"
                     required
-                    className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    className="mt-1 h-10 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                   />
                 </div>
               )}
@@ -479,7 +479,7 @@ const handleEnrollStudent = async (studentId, courseId) => {
                   <select
                     name="courseId"
                     required
-                    className="pl-10 block w-full rounded-lg border-gray-300 bg-gray-50 focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 hover:bg-white"
+                    className="pl-10 h-10 block w-full rounded-lg border-gray-300 bg-gray-50 focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 hover:bg-white"
                   >
                     <option value="">Select a course</option>
                     {availableCourses.map((course) => (
